@@ -1,0 +1,77 @@
+{
+    "type": "DocumentNode",
+    "raw": "You don't know about me without you have read a book by the name of The Adventures of Tom Sawyer;\nbut that ain't no matter.\n",
+    "range": [
+        0,
+        124
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 2,
+            "column": 26
+        }
+    },
+    "children": [
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 2,
+                    "column": 26
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "You don't know about me without you have read a book by the name of The Adventures of Tom Sawyer;\n",
+                    "range": [
+                        0,
+                        98
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 98
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "but that ain't no matter.\n",
+                    "range": [
+                        98,
+                        124
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 2,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 26
+                        }
+                    }
+                }
+            ],
+            "range": [
+                0,
+                124
+            ],
+            "raw": "You don't know about me without you have read a book by the name of The Adventures of Tom Sawyer;\nbut that ain't no matter.\n"
+        }
+    ]
+}

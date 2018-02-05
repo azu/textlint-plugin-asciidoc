@@ -1,0 +1,80 @@
+{
+    "type": "DocumentNode",
+    "raw": "== AsciiDoc Samples\n\nA repository of AsciiDoc source files for testing AsciiDoc rendering on GitHub.\n",
+    "range": [
+        0,
+        101
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 3,
+            "column": 80
+        }
+    },
+    "children": [
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 3,
+                    "column": 80
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 80
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "A repository of AsciiDoc source files for testing AsciiDoc rendering on GitHub.\n",
+                            "range": [
+                                21,
+                                101
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 3,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "column": 80
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        21,
+                        101
+                    ],
+                    "raw": "A repository of AsciiDoc source files for testing AsciiDoc rendering on GitHub.\n"
+                }
+            ],
+            "range": [
+                0,
+                101
+            ],
+            "raw": "== AsciiDoc Samples\n\nA repository of AsciiDoc source files for testing AsciiDoc rendering on GitHub.\n"
+        }
+    ]
+}

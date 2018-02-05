@@ -1,0 +1,119 @@
+{
+    "type": "DocumentNode",
+    "raw": "====\nMake an example of me.\n====\n",
+    "range": [
+        0,
+        33
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 3,
+            "column": 5
+        }
+    },
+    "children": [
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "====\n",
+                    "range": [
+                        0,
+                        5
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "====\n",
+                    "range": [
+                        28,
+                        33
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "example",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 3,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 2,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 23
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Make an example of me.\n",
+                            "range": [
+                                5,
+                                28
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 2,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "column": 23
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5,
+                        28
+                    ],
+                    "raw": "Make an example of me.\n"
+                }
+            ],
+            "range": [
+                0,
+                33
+            ],
+            "raw": "====\nMake an example of me.\n====\n"
+        }
+    ]
+}

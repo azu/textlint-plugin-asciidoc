@@ -1,0 +1,78 @@
+{
+    "type": "DocumentNode",
+    "raw": "= Document Title\n// DO NOT EDIT BETWEEN THESE LINES >>>\nifdef::foobar[]\ninclude::_attributes.adoc[]\nendif::[]\n:skipme: \n// <<< DO NOT EDIT BETWEEN THESE LINES\n:keywords: buzzword\n",
+    "range": [
+        0,
+        179
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 8,
+            "column": 20
+        }
+    },
+    "children": [
+        {
+            "type": "HeaderNode",
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 8,
+                    "column": 20
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "= Document Title\n",
+                    "range": [
+                        0,
+                        17
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 17
+                        }
+                    }
+                },
+                {
+                    "type": "AttributeEntryNode",
+                    "raw": ":keywords: buzzword\n",
+                    "name": "keywords",
+                    "value": "buzzword",
+                    "range": [
+                        159,
+                        179
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 8,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 8,
+                            "column": 20
+                        }
+                    }
+                }
+            ],
+            "range": [
+                0,
+                179
+            ],
+            "raw": "= Document Title\n// DO NOT EDIT BETWEEN THESE LINES >>>\nifdef::foobar[]\ninclude::_attributes.adoc[]\nendif::[]\n:skipme: \n// <<< DO NOT EDIT BETWEEN THESE LINES\n:keywords: buzzword\n"
+        }
+    ]
+}

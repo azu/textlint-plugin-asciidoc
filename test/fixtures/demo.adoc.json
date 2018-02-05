@@ -1,0 +1,4684 @@
+{
+    "type": "DocumentNode",
+    "raw": "= Asciidoctor Demo\n////\nBig ol' comment\n\nsittin' right 'tween this here title 'n header metadata\n////\nDan Allen <thedoc@asciidoctor.org>\n:description: A demo of Asciidoctor. This document \\\n              exercises numerous features of AsciiDoc \\\n              to test Asciidoctor compliance.\n:library: Asciidoctor\n:idprefix:\n:numbered:\n:imagesdir: images\n:experimental:\n//:toc: macro\n:toc: preamble\n:css-signature: demo\n//:max-width: 800px\n//:doctype: book\n//:sectids!:\nifdef::env-github[]\n:note-caption: :information_source:\n:tip-caption: :bulb:\nendif::[]\n\nThis is a demonstration of {library} {asciidoctor-version}.\nAnd this is the preamble of this document.\n\nifdef::env-github[]\n++++\n<a name=\"purpose\"></a>\n++++\nendif::env-github[]\n\n[[purpose]]\n.Purpose\n****\nThis document exercises many of the features of AsciiDoc to test the {library} implementation.\n****\n\nTIP: If you want the HTML to have the familiar AsciiDoc Python style, load the asciidoc.css stylesheet using the CLI option `-a stylesheet=asciidoc.css`.\n\n== First Steps with AsciiDoc\n\n.Inline markup\n* underlines around a phrase place _emphasis_\n* astericks around a phrase make the text *bold*\n* double astericks around one or more **l**etters in a word make those letters bold\n* double underscore around a __sub__string in a word emphasizes that substring\n* use carrots around characters to make them ^super^script\n* use tildes around characters to make them ~sub~script\nifdef::basebackend-html[* to pass through +++<b>HTML</b>+++ directly, surround the text with triple plus]\nifdef::basebackend-docbook[* to pass through +++<constant>XML</constant>+++ directly, surround the text with triple plus]\n\n// separate two adjacent lists using a line comment (only the leading // is required)\n\n- characters can be escaped using a {backslash}\n* for instance, you can escape a quote inside emphasized text like _Here\\'s Johnny!_\n- you can safely use reserved XML characters like <, > and &, which are escaped when converting\n- force a space{sp}between inline elements using the \\{sp} attribute\n- hold text together with an intrinsic non-breaking{nbsp}space attribute, \\{nbsp}\n- handle words with unicode characters like in the name Gregory Romé\n- claim your copyright (C), registered trademark (R) or trademark (TM)\n- select menu:View[Zoom > Reset] to reset the zoom\n\nYou can write text http://example.com[with inline links], optionally{sp}using\nan explicit link:http://example.com[link prefix]. In either case, the link can\nhave a http://example.com?foo=bar&lang=en[query string].\n\nIf you want to break a line +\njust end it in a {plus} sign +\nand continue typing on the next line.\n\n=== Lists Upon Lists\n\n.Adjacent lists\n* this list\n* should join\n\n* to have\n* four items\n\nifdef::env-github[]\n++++\n<a name=\"ordered\"></a>\n++++\nendif::env-github[]\n\n[[ordered]]\n.Ordered lists\n. These items\n. will be auto-numbered\n.. and can be nested\n. A numbered list can nest\n* unordered\n* list\n* items\n\n.Statement\nI swear I left it in _Guy\\'s_ car. Let\\'s go look for it.\n\n[[defs]]\nterm::\n  definition\nline two\n[[another_term]]another term::\n\n  another definition, which can be literal (indented) or regular paragraph\n\nThis should be a standalone paragraph, not grabbed by the definition list.\n\n[[nested]]\n* first level\nwritten on two lines\n* first level\n+\n....\nwith this literal text\n....\n\n* first level\n\n with more literal text\n\n** second level\n*** third level\n- fourth level\n* back to +\nfirst level\n\n// this is just a comment\n\nLet's make a horizontal rule...\n\n'''\n\nthen take a break.\n\n////\nWe'll be right with you...\n\nafter this brief interruption.\n////\n\n== ...and we're back!\n\nDo you want to see a image:tiger.png[Tiger,50]?\n\nDo you feel safer with the tiger in a box?\n\n.Tiger in a box\nimage::tiger.png[]\n\ninclude::include.adoc[]\n\n.Asciidoctor usage example. The listing should contain 5 lines.\n[source,ruby]\n----\nrequire 'asciidoctor'\n\ndoc = Asciidoctor.load '*This* is http://asciidoc.org[AsciiDoc]!', header_footer: true\n\nputs doc.convert\n----\n\n// TODO: Use ifdef to show output according to current backend\n.Output of Asciidoctor usage example\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta name=\"generator\" content=\"Asciidoctor 0.1.4\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Untitled</title>\n<link rel=\"stylesheet\" href=\"./asciidoctor.css\">\n</head>\n<body class=\"article\">\n<div id=\"header\">\n</div>\n<div id=\"content\">\n<div class=\"paragraph\">\n<p><strong>This</strong> is <a href=\"http://asciidoc.org\">AsciiDoc</a>!</p>\n</div>\n</div>\n<div id=\"footer\">\n<div id=\"footer-text\">\nLast updated 2014-01-28 20:11:37 MST\n</div>\n</div>\n</body>\n</html>\n```\n\n=== Block Quotes and \"`Smart`\" Ones\n\n____\nAsciiDoc is _so_ *powerful*!\n____\n\nThis verse comes to mind.\n\n[verse]\nLa la la\n\nHere's another quote:\n\n[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]\n____\nWhen you have eliminated all which is impossible, then whatever remains,\nhowever improbable, must be the truth.\n____\n\n\"`Get moving!`\" he shouted.\n\n== Getting Literal [[literally]]\n\n Want to get literal? Just prefix a line with a space (just 1 space will do).\n\n....\nI'll join that party, too.\n....\n\nWe forgot to mention in <<ordered>> that you can change the numbering style.\n\n.. first item (yeah!)\n.. second item, looking `so mono`\n.. third item, `mono` it is!\n\n// This attribute line will get reattached to the next block\n// despite being followed by a trailing blank line\n[id='wrapup']\n\n== Wrap-up\n\nNOTE: AsciiDoc is quite cool, you should try it!\n\n[TIP]\n.Info\n=====\nGo to this URL to learn more about it:\n\n* http://asciidoc.org\n\nOr you could return to the xref:first-steps-with-asciidoc[] or <<purpose,Purpose>>.\n=====\n\nHere's a reference to the definition of <<another_term>>, in case you forgot it.\n\n[NOTE]\nOne more thing. Happy documenting!\n\n[[google]]When all else fails, head over to <http://google.com>.\n",
+    "range": [
+        0,
+        5936
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 254,
+            "column": 65
+        }
+    },
+    "children": [
+        {
+            "type": "HeaderNode",
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 1,
+                    "column": 19
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "= Asciidoctor Demo\n",
+                    "range": [
+                        0,
+                        19
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 19
+                        }
+                    }
+                }
+            ],
+            "range": [
+                0,
+                19
+            ],
+            "raw": "= Asciidoctor Demo\n"
+        },
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "////\n",
+                    "range": [
+                        19,
+                        24
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 2,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "////\n",
+                    "range": [
+                        97,
+                        102
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 6,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 6,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "comment",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 2,
+                    "column": 0
+                },
+                "end": {
+                    "line": 6,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "Big ol' comment\n",
+                    "range": [
+                        24,
+                        40
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 16
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "\n",
+                    "range": [
+                        40,
+                        41
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 4,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 4,
+                            "column": 1
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "sittin' right 'tween this here title 'n header metadata\n",
+                    "range": [
+                        41,
+                        97
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 5,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 56
+                        }
+                    }
+                }
+            ],
+            "range": [
+                19,
+                102
+            ],
+            "raw": "////\nBig ol' comment\n\nsittin' right 'tween this here title 'n header metadata\n////\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 7,
+                    "column": 0
+                },
+                "end": {
+                    "line": 25,
+                    "column": 10
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "Dan Allen <thedoc@asciidoctor.org>\n",
+                    "range": [
+                        102,
+                        137
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 7,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 7,
+                            "column": 35
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":description: A demo of Asciidoctor. This document \\\n",
+                    "range": [
+                        137,
+                        190
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 8,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 8,
+                            "column": 53
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "              exercises numerous features of AsciiDoc \\\n",
+                    "range": [
+                        190,
+                        246
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 9,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 9,
+                            "column": 56
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "              to test Asciidoctor compliance.\n",
+                    "range": [
+                        246,
+                        292
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 10,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 10,
+                            "column": 46
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":library: Asciidoctor\n",
+                    "range": [
+                        292,
+                        314
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 11,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 11,
+                            "column": 22
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":idprefix:\n",
+                    "range": [
+                        314,
+                        325
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 12,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 11
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":numbered:\n",
+                    "range": [
+                        325,
+                        336
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 13,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 13,
+                            "column": 11
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":imagesdir: images\n",
+                    "range": [
+                        336,
+                        355
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 14,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 14,
+                            "column": 19
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":experimental:\n",
+                    "range": [
+                        355,
+                        370
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 15,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 15,
+                            "column": 15
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":toc: preamble\n",
+                    "range": [
+                        384,
+                        399
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 17,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 17,
+                            "column": 15
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":css-signature: demo\n",
+                    "range": [
+                        399,
+                        420
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 18,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 18,
+                            "column": 21
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "ifdef::env-github[]\n",
+                    "range": [
+                        470,
+                        490
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 22,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 22,
+                            "column": 20
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":note-caption: :information_source:\n",
+                    "range": [
+                        490,
+                        526
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 23,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 23,
+                            "column": 36
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": ":tip-caption: :bulb:\n",
+                    "range": [
+                        526,
+                        547
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 24,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 24,
+                            "column": 21
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "endif::[]\n",
+                    "range": [
+                        547,
+                        557
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 25,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 25,
+                            "column": 10
+                        }
+                    }
+                }
+            ],
+            "range": [
+                102,
+                557
+            ],
+            "raw": "Dan Allen <thedoc@asciidoctor.org>\n:description: A demo of Asciidoctor. This document \\\n              exercises numerous features of AsciiDoc \\\n              to test Asciidoctor compliance.\n:library: Asciidoctor\n:idprefix:\n:numbered:\n:imagesdir: images\n:experimental:\n//:toc: macro\n:toc: preamble\n:css-signature: demo\n//:max-width: 800px\n//:doctype: book\n//:sectids!:\nifdef::env-github[]\n:note-caption: :information_source:\n:tip-caption: :bulb:\nendif::[]\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 27,
+                    "column": 0
+                },
+                "end": {
+                    "line": 28,
+                    "column": 43
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "This is a demonstration of {library} {asciidoctor-version}.\n",
+                    "range": [
+                        558,
+                        618
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 27,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 27,
+                            "column": 60
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "And this is the preamble of this document.\n",
+                    "range": [
+                        618,
+                        661
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 28,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 28,
+                            "column": 43
+                        }
+                    }
+                }
+            ],
+            "range": [
+                558,
+                661
+            ],
+            "raw": "This is a demonstration of {library} {asciidoctor-version}.\nAnd this is the preamble of this document.\n"
+        },
+        {
+            "type": "BlockMacroNode",
+            "data": [],
+            "raw": "ifdef::env-github[]\n",
+            "range": [
+                662,
+                682
+            ],
+            "loc": {
+                "start": {
+                    "line": 30,
+                    "column": 0
+                },
+                "end": {
+                    "line": 30,
+                    "column": 20
+                }
+            }
+        },
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "++++\n",
+                    "range": [
+                        682,
+                        687
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 31,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 31,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "++++\n",
+                    "range": [
+                        710,
+                        715
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 33,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 33,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "pass",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 31,
+                    "column": 0
+                },
+                "end": {
+                    "line": 33,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "<a name=\"purpose\"></a>\n",
+                    "range": [
+                        687,
+                        710
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 32,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 32,
+                            "column": 23
+                        }
+                    }
+                }
+            ],
+            "range": [
+                682,
+                715
+            ],
+            "raw": "++++\n<a name=\"purpose\"></a>\n++++\n"
+        },
+        {
+            "type": "BlockMacroNode",
+            "data": [],
+            "raw": "endif::env-github[]\n",
+            "range": [
+                715,
+                735
+            ],
+            "loc": {
+                "start": {
+                    "line": 34,
+                    "column": 0
+                },
+                "end": {
+                    "line": 34,
+                    "column": 20
+                }
+            }
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [
+                {
+                    "rawText": "[[purpose]]\n",
+                    "text": "[[purpose]]",
+                    "eol": "\n",
+                    "length": 12,
+                    "range": [
+                        736,
+                        748
+                    ],
+                    "start": {
+                        "line": 36,
+                        "column": 0
+                    },
+                    "end": {
+                        "line": 36,
+                        "column": 12
+                    }
+                }
+            ],
+            "loc": {
+                "start": {
+                    "line": 37,
+                    "column": 0
+                },
+                "end": {
+                    "line": 37,
+                    "column": 9
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": ".Purpose\n",
+                    "range": [
+                        748,
+                        757
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 37,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 37,
+                            "column": 9
+                        }
+                    }
+                }
+            ],
+            "range": [
+                748,
+                757
+            ],
+            "raw": ".Purpose\n"
+        },
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "****\n",
+                    "range": [
+                        757,
+                        762
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 38,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 38,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "****\n",
+                    "range": [
+                        857,
+                        862
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 40,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 40,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "sidebar",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 38,
+                    "column": 0
+                },
+                "end": {
+                    "line": 40,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 39,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 39,
+                            "column": 95
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "This document exercises many of the features of AsciiDoc to test the {library} implementation.\n",
+                            "range": [
+                                762,
+                                857
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 39,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 39,
+                                    "column": 95
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        762,
+                        857
+                    ],
+                    "raw": "This document exercises many of the features of AsciiDoc to test the {library} implementation.\n"
+                }
+            ],
+            "range": [
+                757,
+                862
+            ],
+            "raw": "****\nThis document exercises many of the features of AsciiDoc to test the {library} implementation.\n****\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 42,
+                    "column": 0
+                },
+                "end": {
+                    "line": 42,
+                    "column": 154
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "TIP: If you want the HTML to have the familiar AsciiDoc Python style, load the asciidoc.css stylesheet using the CLI option `-a stylesheet=asciidoc.css`.\n",
+                    "range": [
+                        863,
+                        1017
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 42,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 42,
+                            "column": 154
+                        }
+                    }
+                }
+            ],
+            "range": [
+                863,
+                1017
+            ],
+            "raw": "TIP: If you want the HTML to have the familiar AsciiDoc Python style, load the asciidoc.css stylesheet using the CLI option `-a stylesheet=asciidoc.css`.\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 44,
+                    "column": 0
+                },
+                "end": {
+                    "line": 54,
+                    "column": 122
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 46,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 54,
+                            "column": 122
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Inline markup\n",
+                            "range": [
+                                1048,
+                                1063
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 46,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 46,
+                                    "column": 15
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* underlines around a phrase place _emphasis_\n",
+                            "range": [
+                                1063,
+                                1109
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 47,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 47,
+                                    "column": 46
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* astericks around a phrase make the text *bold*\n",
+                            "range": [
+                                1109,
+                                1158
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 48,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 48,
+                                    "column": 49
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* double astericks around one or more **l**etters in a word make those letters bold\n",
+                            "range": [
+                                1158,
+                                1242
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 49,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 49,
+                                    "column": 84
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* double underscore around a __sub__string in a word emphasizes that substring\n",
+                            "range": [
+                                1242,
+                                1321
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 50,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 50,
+                                    "column": 79
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* use carrots around characters to make them ^super^script\n",
+                            "range": [
+                                1321,
+                                1380
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 51,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 51,
+                                    "column": 59
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* use tildes around characters to make them ~sub~script\n",
+                            "range": [
+                                1380,
+                                1436
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 52,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 52,
+                                    "column": 56
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "ifdef::basebackend-html[* to pass through +++<b>HTML</b>+++ directly, surround the text with triple plus]\n",
+                            "range": [
+                                1436,
+                                1542
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 53,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 53,
+                                    "column": 106
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "ifdef::basebackend-docbook[* to pass through +++<constant>XML</constant>+++ directly, surround the text with triple plus]\n",
+                            "range": [
+                                1542,
+                                1664
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 54,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 54,
+                                    "column": 122
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        1048,
+                        1664
+                    ],
+                    "raw": ".Inline markup\n* underlines around a phrase place _emphasis_\n* astericks around a phrase make the text *bold*\n* double astericks around one or more **l**etters in a word make those letters bold\n* double underscore around a __sub__string in a word emphasizes that substring\n* use carrots around characters to make them ^super^script\n* use tildes around characters to make them ~sub~script\nifdef::basebackend-html[* to pass through +++<b>HTML</b>+++ directly, surround the text with triple plus]\nifdef::basebackend-docbook[* to pass through +++<constant>XML</constant>+++ directly, surround the text with triple plus]\n"
+                }
+            ],
+            "range": [
+                1018,
+                1664
+            ],
+            "raw": "== First Steps with AsciiDoc\n\n.Inline markup\n* underlines around a phrase place _emphasis_\n* astericks around a phrase make the text *bold*\n* double astericks around one or more **l**etters in a word make those letters bold\n* double underscore around a __sub__string in a word emphasizes that substring\n* use carrots around characters to make them ^super^script\n* use tildes around characters to make them ~sub~script\nifdef::basebackend-html[* to pass through +++<b>HTML</b>+++ directly, surround the text with triple plus]\nifdef::basebackend-docbook[* to pass through +++<constant>XML</constant>+++ directly, surround the text with triple plus]\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 58,
+                    "column": 0
+                },
+                "end": {
+                    "line": 65,
+                    "column": 51
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "- characters can be escaped using a {backslash}\n",
+                    "range": [
+                        1752,
+                        1800
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 58,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 58,
+                            "column": 48
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "* for instance, you can escape a quote inside emphasized text like _Here\\'s Johnny!_\n",
+                    "range": [
+                        1800,
+                        1885
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 59,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 59,
+                            "column": 85
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "- you can safely use reserved XML characters like <, > and &, which are escaped when converting\n",
+                    "range": [
+                        1885,
+                        1981
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 60,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 60,
+                            "column": 96
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "- force a space{sp}between inline elements using the \\{sp} attribute\n",
+                    "range": [
+                        1981,
+                        2050
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 61,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 61,
+                            "column": 69
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "- hold text together with an intrinsic non-breaking{nbsp}space attribute, \\{nbsp}\n",
+                    "range": [
+                        2050,
+                        2132
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 62,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 62,
+                            "column": 82
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "- handle words with unicode characters like in the name Gregory Romé\n",
+                    "range": [
+                        2132,
+                        2201
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 63,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 63,
+                            "column": 69
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "- claim your copyright (C), registered trademark (R) or trademark (TM)\n",
+                    "range": [
+                        2201,
+                        2272
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 64,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 64,
+                            "column": 71
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "- select menu:View[Zoom > Reset] to reset the zoom\n",
+                    "range": [
+                        2272,
+                        2323
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 65,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 65,
+                            "column": 51
+                        }
+                    }
+                }
+            ],
+            "range": [
+                1752,
+                2323
+            ],
+            "raw": "- characters can be escaped using a {backslash}\n* for instance, you can escape a quote inside emphasized text like _Here\\'s Johnny!_\n- you can safely use reserved XML characters like <, > and &, which are escaped when converting\n- force a space{sp}between inline elements using the \\{sp} attribute\n- hold text together with an intrinsic non-breaking{nbsp}space attribute, \\{nbsp}\n- handle words with unicode characters like in the name Gregory Romé\n- claim your copyright (C), registered trademark (R) or trademark (TM)\n- select menu:View[Zoom > Reset] to reset the zoom\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 67,
+                    "column": 0
+                },
+                "end": {
+                    "line": 69,
+                    "column": 57
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "You can write text http://example.com[with inline links], optionally{sp}using\n",
+                    "range": [
+                        2324,
+                        2402
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 67,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 67,
+                            "column": 78
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "an explicit link:http://example.com[link prefix]. In either case, the link can\n",
+                    "range": [
+                        2402,
+                        2481
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 68,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 68,
+                            "column": 79
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "have a http://example.com?foo=bar&lang=en[query string].\n",
+                    "range": [
+                        2481,
+                        2538
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 69,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 69,
+                            "column": 57
+                        }
+                    }
+                }
+            ],
+            "range": [
+                2324,
+                2538
+            ],
+            "raw": "You can write text http://example.com[with inline links], optionally{sp}using\nan explicit link:http://example.com[link prefix]. In either case, the link can\nhave a http://example.com?foo=bar&lang=en[query string].\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 71,
+                    "column": 0
+                },
+                "end": {
+                    "line": 73,
+                    "column": 38
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "If you want to break a line +\n",
+                    "range": [
+                        2539,
+                        2569
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 71,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 71,
+                            "column": 30
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "just end it in a {plus} sign +\n",
+                    "range": [
+                        2569,
+                        2600
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 72,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 72,
+                            "column": 31
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "and continue typing on the next line.\n",
+                    "range": [
+                        2600,
+                        2638
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 73,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 73,
+                            "column": 38
+                        }
+                    }
+                }
+            ],
+            "range": [
+                2539,
+                2638
+            ],
+            "raw": "If you want to break a line +\njust end it in a {plus} sign +\nand continue typing on the next line.\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 75,
+                    "column": 0
+                },
+                "end": {
+                    "line": 130,
+                    "column": 12
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 77,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 79,
+                            "column": 14
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Adjacent lists\n",
+                            "range": [
+                                2661,
+                                2677
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 77,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 77,
+                                    "column": 16
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* this list\n",
+                            "range": [
+                                2677,
+                                2689
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 78,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 78,
+                                    "column": 12
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* should join\n",
+                            "range": [
+                                2689,
+                                2703
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 79,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 79,
+                                    "column": 14
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        2661,
+                        2703
+                    ],
+                    "raw": ".Adjacent lists\n* this list\n* should join\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 81,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 82,
+                            "column": 13
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "* to have\n",
+                            "range": [
+                                2704,
+                                2714
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 81,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 81,
+                                    "column": 10
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* four items\n",
+                            "range": [
+                                2714,
+                                2727
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 82,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 82,
+                                    "column": 13
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        2704,
+                        2727
+                    ],
+                    "raw": "* to have\n* four items\n"
+                },
+                {
+                    "type": "BlockMacroNode",
+                    "data": [],
+                    "raw": "ifdef::env-github[]\n",
+                    "range": [
+                        2728,
+                        2748
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 84,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 84,
+                            "column": 20
+                        }
+                    }
+                },
+                {
+                    "type": "DelimitedBlockNode",
+                    "delimiterLines": [
+                        {
+                            "type": "LineNode",
+                            "raw": "++++\n",
+                            "range": [
+                                2748,
+                                2753
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 85,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 85,
+                                    "column": 5
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "++++\n",
+                            "range": [
+                                2776,
+                                2781
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 87,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 87,
+                                    "column": 5
+                                }
+                            }
+                        }
+                    ],
+                    "enclosureType": "pass",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 85,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 87,
+                            "column": 5
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "<a name=\"ordered\"></a>\n",
+                            "range": [
+                                2753,
+                                2776
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 86,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 86,
+                                    "column": 23
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        2748,
+                        2781
+                    ],
+                    "raw": "++++\n<a name=\"ordered\"></a>\n++++\n"
+                },
+                {
+                    "type": "BlockMacroNode",
+                    "data": [],
+                    "raw": "endif::env-github[]\n",
+                    "range": [
+                        2781,
+                        2801
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 88,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 88,
+                            "column": 20
+                        }
+                    }
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [
+                        {
+                            "rawText": "[[ordered]]\n",
+                            "text": "[[ordered]]",
+                            "eol": "\n",
+                            "length": 12,
+                            "range": [
+                                2802,
+                                2814
+                            ],
+                            "start": {
+                                "line": 90,
+                                "column": 0
+                            },
+                            "end": {
+                                "line": 90,
+                                "column": 12
+                            }
+                        }
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 91,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 98,
+                            "column": 8
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Ordered lists\n",
+                            "range": [
+                                2814,
+                                2829
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 91,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 91,
+                                    "column": 15
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": ". These items\n",
+                            "range": [
+                                2829,
+                                2843
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 92,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 92,
+                                    "column": 14
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": ". will be auto-numbered\n",
+                            "range": [
+                                2843,
+                                2867
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 93,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 93,
+                                    "column": 24
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": ".. and can be nested\n",
+                            "range": [
+                                2867,
+                                2888
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 94,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 94,
+                                    "column": 21
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": ". A numbered list can nest\n",
+                            "range": [
+                                2888,
+                                2915
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 95,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 95,
+                                    "column": 27
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* unordered\n",
+                            "range": [
+                                2915,
+                                2927
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 96,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 96,
+                                    "column": 12
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* list\n",
+                            "range": [
+                                2927,
+                                2934
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 97,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 97,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* items\n",
+                            "range": [
+                                2934,
+                                2942
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 98,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 98,
+                                    "column": 8
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        2814,
+                        2942
+                    ],
+                    "raw": ".Ordered lists\n. These items\n. will be auto-numbered\n.. and can be nested\n. A numbered list can nest\n* unordered\n* list\n* items\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 100,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 101,
+                            "column": 58
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Statement\n",
+                            "range": [
+                                2943,
+                                2954
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 100,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 100,
+                                    "column": 11
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "I swear I left it in _Guy\\'s_ car. Let\\'s go look for it.\n",
+                            "range": [
+                                2954,
+                                3012
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 101,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 101,
+                                    "column": 58
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        2943,
+                        3012
+                    ],
+                    "raw": ".Statement\nI swear I left it in _Guy\\'s_ car. Let\\'s go look for it.\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [
+                        {
+                            "rawText": "[[defs]]\n",
+                            "text": "[[defs]]",
+                            "eol": "\n",
+                            "length": 9,
+                            "range": [
+                                3013,
+                                3022
+                            ],
+                            "start": {
+                                "line": 103,
+                                "column": 0
+                            },
+                            "end": {
+                                "line": 103,
+                                "column": 9
+                            }
+                        }
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 104,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 107,
+                            "column": 31
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "term::\n",
+                            "range": [
+                                3022,
+                                3029
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 104,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 104,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "  definition\n",
+                            "range": [
+                                3029,
+                                3042
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 105,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 105,
+                                    "column": 13
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "line two\n",
+                            "range": [
+                                3042,
+                                3051
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 106,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 106,
+                                    "column": 9
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "[[another_term]]another term::\n",
+                            "range": [
+                                3051,
+                                3082
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 107,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 107,
+                                    "column": 31
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3022,
+                        3082
+                    ],
+                    "raw": "term::\n  definition\nline two\n[[another_term]]another term::\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 109,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 109,
+                            "column": 75
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "  another definition, which can be literal (indented) or regular paragraph\n",
+                            "range": [
+                                3083,
+                                3158
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 109,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 109,
+                                    "column": 75
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3083,
+                        3158
+                    ],
+                    "raw": "  another definition, which can be literal (indented) or regular paragraph\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 111,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 111,
+                            "column": 75
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "This should be a standalone paragraph, not grabbed by the definition list.\n",
+                            "range": [
+                                3159,
+                                3234
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 111,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 111,
+                                    "column": 75
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3159,
+                        3234
+                    ],
+                    "raw": "This should be a standalone paragraph, not grabbed by the definition list.\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [
+                        {
+                            "rawText": "[[nested]]\n",
+                            "text": "[[nested]]",
+                            "eol": "\n",
+                            "length": 11,
+                            "range": [
+                                3235,
+                                3246
+                            ],
+                            "start": {
+                                "line": 113,
+                                "column": 0
+                            },
+                            "end": {
+                                "line": 113,
+                                "column": 11
+                            }
+                        }
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 114,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 117,
+                            "column": 2
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "* first level\n",
+                            "range": [
+                                3246,
+                                3260
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 114,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 114,
+                                    "column": 14
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "written on two lines\n",
+                            "range": [
+                                3260,
+                                3281
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 115,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 115,
+                                    "column": 21
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* first level\n",
+                            "range": [
+                                3281,
+                                3295
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 116,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 116,
+                                    "column": 14
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "+\n",
+                            "range": [
+                                3295,
+                                3297
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 117,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 117,
+                                    "column": 2
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3246,
+                        3297
+                    ],
+                    "raw": "* first level\nwritten on two lines\n* first level\n+\n"
+                },
+                {
+                    "type": "DelimitedBlockNode",
+                    "delimiterLines": [
+                        {
+                            "type": "LineNode",
+                            "raw": "....\n",
+                            "range": [
+                                3297,
+                                3302
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 118,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 118,
+                                    "column": 5
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "....\n",
+                            "range": [
+                                3325,
+                                3330
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 120,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 120,
+                                    "column": 5
+                                }
+                            }
+                        }
+                    ],
+                    "enclosureType": "literal",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 118,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 120,
+                            "column": 5
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "with this literal text\n",
+                            "range": [
+                                3302,
+                                3325
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 119,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 119,
+                                    "column": 23
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3297,
+                        3330
+                    ],
+                    "raw": "....\nwith this literal text\n....\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 122,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 122,
+                            "column": 14
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "* first level\n",
+                            "range": [
+                                3331,
+                                3345
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 122,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 122,
+                                    "column": 14
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3331,
+                        3345
+                    ],
+                    "raw": "* first level\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 124,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 124,
+                            "column": 24
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": " with more literal text\n",
+                            "range": [
+                                3346,
+                                3370
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 124,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 124,
+                                    "column": 24
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3346,
+                        3370
+                    ],
+                    "raw": " with more literal text\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 126,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 130,
+                            "column": 12
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "** second level\n",
+                            "range": [
+                                3371,
+                                3387
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 126,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 126,
+                                    "column": 16
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "*** third level\n",
+                            "range": [
+                                3387,
+                                3403
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 127,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 127,
+                                    "column": 16
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "- fourth level\n",
+                            "range": [
+                                3403,
+                                3418
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 128,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 128,
+                                    "column": 15
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "* back to +\n",
+                            "range": [
+                                3418,
+                                3430
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 129,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 129,
+                                    "column": 12
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "first level\n",
+                            "range": [
+                                3430,
+                                3442
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 130,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 130,
+                                    "column": 12
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3371,
+                        3442
+                    ],
+                    "raw": "** second level\n*** third level\n- fourth level\n* back to +\nfirst level\n"
+                }
+            ],
+            "range": [
+                2639,
+                3442
+            ],
+            "raw": "=== Lists Upon Lists\n\n.Adjacent lists\n* this list\n* should join\n\n* to have\n* four items\n\nifdef::env-github[]\n++++\n<a name=\"ordered\"></a>\n++++\nendif::env-github[]\n\n[[ordered]]\n.Ordered lists\n. These items\n. will be auto-numbered\n.. and can be nested\n. A numbered list can nest\n* unordered\n* list\n* items\n\n.Statement\nI swear I left it in _Guy\\'s_ car. Let\\'s go look for it.\n\n[[defs]]\nterm::\n  definition\nline two\n[[another_term]]another term::\n\n  another definition, which can be literal (indented) or regular paragraph\n\nThis should be a standalone paragraph, not grabbed by the definition list.\n\n[[nested]]\n* first level\nwritten on two lines\n* first level\n+\n....\nwith this literal text\n....\n\n* first level\n\n with more literal text\n\n** second level\n*** third level\n- fourth level\n* back to +\nfirst level\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 134,
+                    "column": 0
+                },
+                "end": {
+                    "line": 134,
+                    "column": 32
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "Let's make a horizontal rule...\n",
+                    "range": [
+                        3470,
+                        3502
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 134,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 134,
+                            "column": 32
+                        }
+                    }
+                }
+            ],
+            "range": [
+                3470,
+                3502
+            ],
+            "raw": "Let's make a horizontal rule...\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 136,
+                    "column": 0
+                },
+                "end": {
+                    "line": 136,
+                    "column": 4
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "'''\n",
+                    "range": [
+                        3503,
+                        3507
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 136,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 136,
+                            "column": 4
+                        }
+                    }
+                }
+            ],
+            "range": [
+                3503,
+                3507
+            ],
+            "raw": "'''\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 138,
+                    "column": 0
+                },
+                "end": {
+                    "line": 138,
+                    "column": 19
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "then take a break.\n",
+                    "range": [
+                        3508,
+                        3527
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 138,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 138,
+                            "column": 19
+                        }
+                    }
+                }
+            ],
+            "range": [
+                3508,
+                3527
+            ],
+            "raw": "then take a break.\n"
+        },
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "////\n",
+                    "range": [
+                        3528,
+                        3533
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 140,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 140,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "////\n",
+                    "range": [
+                        3592,
+                        3597
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 144,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 144,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "comment",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 140,
+                    "column": 0
+                },
+                "end": {
+                    "line": 144,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "We'll be right with you...\n",
+                    "range": [
+                        3533,
+                        3560
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 141,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 141,
+                            "column": 27
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "\n",
+                    "range": [
+                        3560,
+                        3561
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 142,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 142,
+                            "column": 1
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "after this brief interruption.\n",
+                    "range": [
+                        3561,
+                        3592
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 143,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 143,
+                            "column": 31
+                        }
+                    }
+                }
+            ],
+            "range": [
+                3528,
+                3597
+            ],
+            "raw": "////\nWe'll be right with you...\n\nafter this brief interruption.\n////\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 146,
+                    "column": 0
+                },
+                "end": {
+                    "line": 215,
+                    "column": 28
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 148,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 148,
+                            "column": 48
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Do you want to see a image:tiger.png[Tiger,50]?\n",
+                            "range": [
+                                3621,
+                                3669
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 148,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 148,
+                                    "column": 48
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3621,
+                        3669
+                    ],
+                    "raw": "Do you want to see a image:tiger.png[Tiger,50]?\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 150,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 150,
+                            "column": 43
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Do you feel safer with the tiger in a box?\n",
+                            "range": [
+                                3670,
+                                3713
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 150,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 150,
+                                    "column": 43
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3670,
+                        3713
+                    ],
+                    "raw": "Do you feel safer with the tiger in a box?\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 152,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 153,
+                            "column": 19
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Tiger in a box\n",
+                            "range": [
+                                3714,
+                                3730
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 152,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 152,
+                                    "column": 16
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "image::tiger.png[]\n",
+                            "range": [
+                                3730,
+                                3749
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 153,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 153,
+                                    "column": 19
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3714,
+                        3749
+                    ],
+                    "raw": ".Tiger in a box\nimage::tiger.png[]\n"
+                },
+                {
+                    "type": "BlockMacroNode",
+                    "data": [],
+                    "raw": "include::include.adoc[]\n",
+                    "range": [
+                        3750,
+                        3774
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 155,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 155,
+                            "column": 24
+                        }
+                    }
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 157,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 157,
+                            "column": 64
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Asciidoctor usage example. The listing should contain 5 lines.\n",
+                            "range": [
+                                3775,
+                                3839
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 157,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 157,
+                                    "column": 64
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3775,
+                        3839
+                    ],
+                    "raw": ".Asciidoctor usage example. The listing should contain 5 lines.\n"
+                },
+                {
+                    "type": "DelimitedBlockNode",
+                    "delimiterLines": [
+                        {
+                            "type": "LineNode",
+                            "raw": "----\n",
+                            "range": [
+                                3853,
+                                3858
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 159,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 159,
+                                    "column": 5
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "----\n",
+                            "range": [
+                                3986,
+                                3991
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 165,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 165,
+                                    "column": 5
+                                }
+                            }
+                        }
+                    ],
+                    "enclosureType": "listing",
+                    "data": [
+                        {
+                            "rawText": "[source,ruby]\n",
+                            "text": "[source,ruby]",
+                            "eol": "\n",
+                            "length": 14,
+                            "range": [
+                                3839,
+                                3853
+                            ],
+                            "start": {
+                                "line": 158,
+                                "column": 0
+                            },
+                            "end": {
+                                "line": 158,
+                                "column": 14
+                            }
+                        }
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 159,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 165,
+                            "column": 5
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "require 'asciidoctor'\n",
+                            "range": [
+                                3858,
+                                3880
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 160,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 160,
+                                    "column": 22
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "\n",
+                            "range": [
+                                3880,
+                                3881
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 161,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 161,
+                                    "column": 1
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "doc = Asciidoctor.load '*This* is http://asciidoc.org[AsciiDoc]!', header_footer: true\n",
+                            "range": [
+                                3881,
+                                3968
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 162,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 162,
+                                    "column": 87
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "\n",
+                            "range": [
+                                3968,
+                                3969
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 163,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 163,
+                                    "column": 1
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "puts doc.convert\n",
+                            "range": [
+                                3969,
+                                3986
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 164,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 164,
+                                    "column": 17
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        3853,
+                        3991
+                    ],
+                    "raw": "----\nrequire 'asciidoctor'\n\ndoc = Asciidoctor.load '*This* is http://asciidoc.org[AsciiDoc]!', header_footer: true\n\nputs doc.convert\n----\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 167,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 194,
+                            "column": 4
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Output of Asciidoctor usage example\n",
+                            "range": [
+                                4055,
+                                4092
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 168,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 168,
+                                    "column": 37
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "```html\n",
+                            "range": [
+                                4092,
+                                4100
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 169,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 169,
+                                    "column": 8
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<!DOCTYPE html>\n",
+                            "range": [
+                                4100,
+                                4116
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 170,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 170,
+                                    "column": 16
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<html lang=\"en\">\n",
+                            "range": [
+                                4116,
+                                4133
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 171,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 171,
+                                    "column": 17
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<head>\n",
+                            "range": [
+                                4133,
+                                4140
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 172,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 172,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n",
+                            "range": [
+                                4140,
+                                4208
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 173,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 173,
+                                    "column": 68
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<meta name=\"generator\" content=\"Asciidoctor 0.1.4\">\n",
+                            "range": [
+                                4208,
+                                4260
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 174,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 174,
+                                    "column": 52
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n",
+                            "range": [
+                                4260,
+                                4331
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 175,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 175,
+                                    "column": 71
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<title>Untitled</title>\n",
+                            "range": [
+                                4331,
+                                4355
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 176,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 176,
+                                    "column": 24
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<link rel=\"stylesheet\" href=\"./asciidoctor.css\">\n",
+                            "range": [
+                                4355,
+                                4404
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 177,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 177,
+                                    "column": 49
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</head>\n",
+                            "range": [
+                                4404,
+                                4412
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 178,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 178,
+                                    "column": 8
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<body class=\"article\">\n",
+                            "range": [
+                                4412,
+                                4435
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 179,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 179,
+                                    "column": 23
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<div id=\"header\">\n",
+                            "range": [
+                                4435,
+                                4453
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 180,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 180,
+                                    "column": 18
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</div>\n",
+                            "range": [
+                                4453,
+                                4460
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 181,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 181,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<div id=\"content\">\n",
+                            "range": [
+                                4460,
+                                4479
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 182,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 182,
+                                    "column": 19
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<div class=\"paragraph\">\n",
+                            "range": [
+                                4479,
+                                4503
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 183,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 183,
+                                    "column": 24
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<p><strong>This</strong> is <a href=\"http://asciidoc.org\">AsciiDoc</a>!</p>\n",
+                            "range": [
+                                4503,
+                                4579
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 184,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 184,
+                                    "column": 76
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</div>\n",
+                            "range": [
+                                4579,
+                                4586
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 185,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 185,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</div>\n",
+                            "range": [
+                                4586,
+                                4593
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 186,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 186,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<div id=\"footer\">\n",
+                            "range": [
+                                4593,
+                                4611
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 187,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 187,
+                                    "column": 18
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "<div id=\"footer-text\">\n",
+                            "range": [
+                                4611,
+                                4634
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 188,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 188,
+                                    "column": 23
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "Last updated 2014-01-28 20:11:37 MST\n",
+                            "range": [
+                                4634,
+                                4671
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 189,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 189,
+                                    "column": 37
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</div>\n",
+                            "range": [
+                                4671,
+                                4678
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 190,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 190,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</div>\n",
+                            "range": [
+                                4678,
+                                4685
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 191,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 191,
+                                    "column": 7
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</body>\n",
+                            "range": [
+                                4685,
+                                4693
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 192,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 192,
+                                    "column": 8
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "</html>\n",
+                            "range": [
+                                4693,
+                                4701
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 193,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 193,
+                                    "column": 8
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "```\n",
+                            "range": [
+                                4701,
+                                4705
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 194,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 194,
+                                    "column": 4
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        4055,
+                        4705
+                    ],
+                    "raw": ".Output of Asciidoctor usage example\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta name=\"generator\" content=\"Asciidoctor 0.1.4\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Untitled</title>\n<link rel=\"stylesheet\" href=\"./asciidoctor.css\">\n</head>\n<body class=\"article\">\n<div id=\"header\">\n</div>\n<div id=\"content\">\n<div class=\"paragraph\">\n<p><strong>This</strong> is <a href=\"http://asciidoc.org\">AsciiDoc</a>!</p>\n</div>\n</div>\n<div id=\"footer\">\n<div id=\"footer-text\">\nLast updated 2014-01-28 20:11:37 MST\n</div>\n</div>\n</body>\n</html>\n```\n"
+                },
+                {
+                    "type": "SectionNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 196,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 215,
+                            "column": 28
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "DelimitedBlockNode",
+                            "delimiterLines": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "____\n",
+                                    "range": [
+                                        4743,
+                                        4748
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 198,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 198,
+                                            "column": 5
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "LineNode",
+                                    "raw": "____\n",
+                                    "range": [
+                                        4777,
+                                        4782
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 200,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 200,
+                                            "column": 5
+                                        }
+                                    }
+                                }
+                            ],
+                            "enclosureType": "quote",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 198,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 200,
+                                    "column": 5
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "ParagraphNode",
+                                    "data": [],
+                                    "loc": {
+                                        "start": {
+                                            "line": 199,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 199,
+                                            "column": 29
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "type": "LineNode",
+                                            "raw": "AsciiDoc is _so_ *powerful*!\n",
+                                            "range": [
+                                                4748,
+                                                4777
+                                            ],
+                                            "loc": {
+                                                "start": {
+                                                    "line": 199,
+                                                    "column": 0
+                                                },
+                                                "end": {
+                                                    "line": 199,
+                                                    "column": 29
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "range": [
+                                        4748,
+                                        4777
+                                    ],
+                                    "raw": "AsciiDoc is _so_ *powerful*!\n"
+                                }
+                            ],
+                            "range": [
+                                4743,
+                                4782
+                            ],
+                            "raw": "____\nAsciiDoc is _so_ *powerful*!\n____\n"
+                        },
+                        {
+                            "type": "ParagraphNode",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 202,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 202,
+                                    "column": 26
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "This verse comes to mind.\n",
+                                    "range": [
+                                        4783,
+                                        4809
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 202,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 202,
+                                            "column": 26
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                4783,
+                                4809
+                            ],
+                            "raw": "This verse comes to mind.\n"
+                        },
+                        {
+                            "type": "ParagraphNode",
+                            "data": [
+                                {
+                                    "rawText": "[verse]\n",
+                                    "text": "[verse]",
+                                    "eol": "\n",
+                                    "length": 8,
+                                    "range": [
+                                        4810,
+                                        4818
+                                    ],
+                                    "start": {
+                                        "line": 204,
+                                        "column": 0
+                                    },
+                                    "end": {
+                                        "line": 204,
+                                        "column": 8
+                                    }
+                                }
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 205,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 205,
+                                    "column": 9
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "La la la\n",
+                                    "range": [
+                                        4818,
+                                        4827
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 205,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 205,
+                                            "column": 9
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                4818,
+                                4827
+                            ],
+                            "raw": "La la la\n"
+                        },
+                        {
+                            "type": "ParagraphNode",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 207,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 207,
+                                    "column": 22
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "Here's another quote:\n",
+                                    "range": [
+                                        4828,
+                                        4850
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 207,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 207,
+                                            "column": 22
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                4828,
+                                4850
+                            ],
+                            "raw": "Here's another quote:\n"
+                        },
+                        {
+                            "type": "DelimitedBlockNode",
+                            "delimiterLines": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "____\n",
+                                    "range": [
+                                        4918,
+                                        4923
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 210,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 210,
+                                            "column": 5
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "LineNode",
+                                    "raw": "____\n",
+                                    "range": [
+                                        5035,
+                                        5040
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 213,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 213,
+                                            "column": 5
+                                        }
+                                    }
+                                }
+                            ],
+                            "enclosureType": "quote",
+                            "data": [
+                                {
+                                    "rawText": "[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]\n",
+                                    "text": "[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]",
+                                    "eol": "\n",
+                                    "length": 67,
+                                    "range": [
+                                        4851,
+                                        4918
+                                    ],
+                                    "start": {
+                                        "line": 209,
+                                        "column": 0
+                                    },
+                                    "end": {
+                                        "line": 209,
+                                        "column": 67
+                                    }
+                                }
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 210,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 213,
+                                    "column": 5
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "ParagraphNode",
+                                    "data": [],
+                                    "loc": {
+                                        "start": {
+                                            "line": 211,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 212,
+                                            "column": 39
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "type": "LineNode",
+                                            "raw": "When you have eliminated all which is impossible, then whatever remains,\n",
+                                            "range": [
+                                                4923,
+                                                4996
+                                            ],
+                                            "loc": {
+                                                "start": {
+                                                    "line": 211,
+                                                    "column": 0
+                                                },
+                                                "end": {
+                                                    "line": 211,
+                                                    "column": 73
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "LineNode",
+                                            "raw": "however improbable, must be the truth.\n",
+                                            "range": [
+                                                4996,
+                                                5035
+                                            ],
+                                            "loc": {
+                                                "start": {
+                                                    "line": 212,
+                                                    "column": 0
+                                                },
+                                                "end": {
+                                                    "line": 212,
+                                                    "column": 39
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "range": [
+                                        4923,
+                                        5035
+                                    ],
+                                    "raw": "When you have eliminated all which is impossible, then whatever remains,\nhowever improbable, must be the truth.\n"
+                                }
+                            ],
+                            "range": [
+                                4918,
+                                5040
+                            ],
+                            "raw": "____\nWhen you have eliminated all which is impossible, then whatever remains,\nhowever improbable, must be the truth.\n____\n"
+                        },
+                        {
+                            "type": "ParagraphNode",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 215,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 215,
+                                    "column": 28
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "\"`Get moving!`\" he shouted.\n",
+                                    "range": [
+                                        5041,
+                                        5069
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 215,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 215,
+                                            "column": 28
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                5041,
+                                5069
+                            ],
+                            "raw": "\"`Get moving!`\" he shouted.\n"
+                        }
+                    ],
+                    "range": [
+                        4706,
+                        5069
+                    ],
+                    "raw": "=== Block Quotes and \"`Smart`\" Ones\n\n____\nAsciiDoc is _so_ *powerful*!\n____\n\nThis verse comes to mind.\n\n[verse]\nLa la la\n\nHere's another quote:\n\n[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]\n____\nWhen you have eliminated all which is impossible, then whatever remains,\nhowever improbable, must be the truth.\n____\n\n\"`Get moving!`\" he shouted.\n"
+                }
+            ],
+            "range": [
+                3598,
+                5069
+            ],
+            "raw": "== ...and we're back!\n\nDo you want to see a image:tiger.png[Tiger,50]?\n\nDo you feel safer with the tiger in a box?\n\n.Tiger in a box\nimage::tiger.png[]\n\ninclude::include.adoc[]\n\n.Asciidoctor usage example. The listing should contain 5 lines.\n[source,ruby]\n----\nrequire 'asciidoctor'\n\ndoc = Asciidoctor.load '*This* is http://asciidoc.org[AsciiDoc]!', header_footer: true\n\nputs doc.convert\n----\n\n// TODO: Use ifdef to show output according to current backend\n.Output of Asciidoctor usage example\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta name=\"generator\" content=\"Asciidoctor 0.1.4\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Untitled</title>\n<link rel=\"stylesheet\" href=\"./asciidoctor.css\">\n</head>\n<body class=\"article\">\n<div id=\"header\">\n</div>\n<div id=\"content\">\n<div class=\"paragraph\">\n<p><strong>This</strong> is <a href=\"http://asciidoc.org\">AsciiDoc</a>!</p>\n</div>\n</div>\n<div id=\"footer\">\n<div id=\"footer-text\">\nLast updated 2014-01-28 20:11:37 MST\n</div>\n</div>\n</body>\n</html>\n```\n\n=== Block Quotes and \"`Smart`\" Ones\n\n____\nAsciiDoc is _so_ *powerful*!\n____\n\nThis verse comes to mind.\n\n[verse]\nLa la la\n\nHere's another quote:\n\n[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]\n____\nWhen you have eliminated all which is impossible, then whatever remains,\nhowever improbable, must be the truth.\n____\n\n\"`Get moving!`\" he shouted.\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 217,
+                    "column": 0
+                },
+                "end": {
+                    "line": 229,
+                    "column": 29
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 219,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 219,
+                            "column": 78
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": " Want to get literal? Just prefix a line with a space (just 1 space will do).\n",
+                            "range": [
+                                5104,
+                                5182
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 219,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 219,
+                                    "column": 78
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5104,
+                        5182
+                    ],
+                    "raw": " Want to get literal? Just prefix a line with a space (just 1 space will do).\n"
+                },
+                {
+                    "type": "DelimitedBlockNode",
+                    "delimiterLines": [
+                        {
+                            "type": "LineNode",
+                            "raw": "....\n",
+                            "range": [
+                                5183,
+                                5188
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 221,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 221,
+                                    "column": 5
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "....\n",
+                            "range": [
+                                5215,
+                                5220
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 223,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 223,
+                                    "column": 5
+                                }
+                            }
+                        }
+                    ],
+                    "enclosureType": "literal",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 221,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 223,
+                            "column": 5
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "I'll join that party, too.\n",
+                            "range": [
+                                5188,
+                                5215
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 222,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 222,
+                                    "column": 27
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5183,
+                        5220
+                    ],
+                    "raw": "....\nI'll join that party, too.\n....\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 225,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 225,
+                            "column": 77
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "We forgot to mention in <<ordered>> that you can change the numbering style.\n",
+                            "range": [
+                                5221,
+                                5298
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 225,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 225,
+                                    "column": 77
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5221,
+                        5298
+                    ],
+                    "raw": "We forgot to mention in <<ordered>> that you can change the numbering style.\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 227,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 229,
+                            "column": 29
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".. first item (yeah!)\n",
+                            "range": [
+                                5299,
+                                5321
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 227,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 227,
+                                    "column": 22
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": ".. second item, looking `so mono`\n",
+                            "range": [
+                                5321,
+                                5355
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 228,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 228,
+                                    "column": 34
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": ".. third item, `mono` it is!\n",
+                            "range": [
+                                5355,
+                                5384
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 229,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 229,
+                                    "column": 29
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5299,
+                        5384
+                    ],
+                    "raw": ".. first item (yeah!)\n.. second item, looking `so mono`\n.. third item, `mono` it is!\n"
+                }
+            ],
+            "range": [
+                5070,
+                5384
+            ],
+            "raw": "== Getting Literal [[literally]]\n\n Want to get literal? Just prefix a line with a space (just 1 space will do).\n\n....\nI'll join that party, too.\n....\n\nWe forgot to mention in <<ordered>> that you can change the numbering style.\n\n.. first item (yeah!)\n.. second item, looking `so mono`\n.. third item, `mono` it is!\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [
+                {
+                    "rawText": "[id='wrapup']\n",
+                    "text": "[id='wrapup']",
+                    "eol": "\n",
+                    "length": 14,
+                    "range": [
+                        5497,
+                        5511
+                    ],
+                    "start": {
+                        "line": 233,
+                        "column": 0
+                    },
+                    "end": {
+                        "line": 233,
+                        "column": 14
+                    }
+                }
+            ],
+            "loc": {
+                "start": {
+                    "line": 235,
+                    "column": 0
+                },
+                "end": {
+                    "line": 254,
+                    "column": 65
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 237,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 237,
+                            "column": 49
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "NOTE: AsciiDoc is quite cool, you should try it!\n",
+                            "range": [
+                                5524,
+                                5573
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 237,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 237,
+                                    "column": 49
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5524,
+                        5573
+                    ],
+                    "raw": "NOTE: AsciiDoc is quite cool, you should try it!\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [
+                        {
+                            "rawText": "[TIP]\n",
+                            "text": "[TIP]",
+                            "eol": "\n",
+                            "length": 6,
+                            "range": [
+                                5574,
+                                5580
+                            ],
+                            "start": {
+                                "line": 239,
+                                "column": 0
+                            },
+                            "end": {
+                                "line": 239,
+                                "column": 6
+                            }
+                        }
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 240,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 240,
+                            "column": 6
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": ".Info\n",
+                            "range": [
+                                5580,
+                                5586
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 240,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 240,
+                                    "column": 6
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5580,
+                        5586
+                    ],
+                    "raw": ".Info\n"
+                },
+                {
+                    "type": "DelimitedBlockNode",
+                    "delimiterLines": [
+                        {
+                            "type": "LineNode",
+                            "raw": "=====\n",
+                            "range": [
+                                5586,
+                                5592
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 241,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 241,
+                                    "column": 6
+                                }
+                            }
+                        },
+                        {
+                            "type": "LineNode",
+                            "raw": "=====\n",
+                            "range": [
+                                5739,
+                                5745
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 247,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 247,
+                                    "column": 6
+                                }
+                            }
+                        }
+                    ],
+                    "enclosureType": "example",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 241,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 247,
+                            "column": 6
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "ParagraphNode",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 242,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 242,
+                                    "column": 39
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "Go to this URL to learn more about it:\n",
+                                    "range": [
+                                        5592,
+                                        5631
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 242,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 242,
+                                            "column": 39
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                5592,
+                                5631
+                            ],
+                            "raw": "Go to this URL to learn more about it:\n"
+                        },
+                        {
+                            "type": "ParagraphNode",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 244,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 244,
+                                    "column": 22
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "* http://asciidoc.org\n",
+                                    "range": [
+                                        5632,
+                                        5654
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 244,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 244,
+                                            "column": 22
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                5632,
+                                5654
+                            ],
+                            "raw": "* http://asciidoc.org\n"
+                        },
+                        {
+                            "type": "ParagraphNode",
+                            "data": [],
+                            "loc": {
+                                "start": {
+                                    "line": 246,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 246,
+                                    "column": 84
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "LineNode",
+                                    "raw": "Or you could return to the xref:first-steps-with-asciidoc[] or <<purpose,Purpose>>.\n",
+                                    "range": [
+                                        5655,
+                                        5739
+                                    ],
+                                    "loc": {
+                                        "start": {
+                                            "line": 246,
+                                            "column": 0
+                                        },
+                                        "end": {
+                                            "line": 246,
+                                            "column": 84
+                                        }
+                                    }
+                                }
+                            ],
+                            "range": [
+                                5655,
+                                5739
+                            ],
+                            "raw": "Or you could return to the xref:first-steps-with-asciidoc[] or <<purpose,Purpose>>.\n"
+                        }
+                    ],
+                    "range": [
+                        5586,
+                        5745
+                    ],
+                    "raw": "=====\nGo to this URL to learn more about it:\n\n* http://asciidoc.org\n\nOr you could return to the xref:first-steps-with-asciidoc[] or <<purpose,Purpose>>.\n=====\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 249,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 249,
+                            "column": 81
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Here's a reference to the definition of <<another_term>>, in case you forgot it.\n",
+                            "range": [
+                                5746,
+                                5827
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 249,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 249,
+                                    "column": 81
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5746,
+                        5827
+                    ],
+                    "raw": "Here's a reference to the definition of <<another_term>>, in case you forgot it.\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [
+                        {
+                            "rawText": "[NOTE]\n",
+                            "text": "[NOTE]",
+                            "eol": "\n",
+                            "length": 7,
+                            "range": [
+                                5828,
+                                5835
+                            ],
+                            "start": {
+                                "line": 251,
+                                "column": 0
+                            },
+                            "end": {
+                                "line": 251,
+                                "column": 7
+                            }
+                        }
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 252,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 252,
+                            "column": 35
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "One more thing. Happy documenting!\n",
+                            "range": [
+                                5835,
+                                5870
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 252,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 252,
+                                    "column": 35
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5835,
+                        5870
+                    ],
+                    "raw": "One more thing. Happy documenting!\n"
+                },
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 254,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 254,
+                            "column": 65
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "[[google]]When all else fails, head over to <http://google.com>.\n",
+                            "range": [
+                                5871,
+                                5936
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 254,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 254,
+                                    "column": 65
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5871,
+                        5936
+                    ],
+                    "raw": "[[google]]When all else fails, head over to <http://google.com>.\n"
+                }
+            ],
+            "range": [
+                5512,
+                5936
+            ],
+            "raw": "== Wrap-up\n\nNOTE: AsciiDoc is quite cool, you should try it!\n\n[TIP]\n.Info\n=====\nGo to this URL to learn more about it:\n\n* http://asciidoc.org\n\nOr you could return to the xref:first-steps-with-asciidoc[] or <<purpose,Purpose>>.\n=====\n\nHere's a reference to the definition of <<another_term>>, in case you forgot it.\n\n[NOTE]\nOne more thing. Happy documenting!\n\n[[google]]When all else fails, head over to <http://google.com>.\n"
+        }
+    ]
+}

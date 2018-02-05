@@ -1,0 +1,218 @@
+{
+    "type": "DocumentNode",
+    "raw": "====\nLet me show you the way.\n====\n****\nLet's go on a little trip.\n****\n",
+    "range": [
+        0,
+        72
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 6,
+            "column": 5
+        }
+    },
+    "children": [
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "====\n",
+                    "range": [
+                        0,
+                        5
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "====\n",
+                    "range": [
+                        30,
+                        35
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "example",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 3,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 2,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 25
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Let me show you the way.\n",
+                            "range": [
+                                5,
+                                30
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 2,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "column": 25
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5,
+                        30
+                    ],
+                    "raw": "Let me show you the way.\n"
+                }
+            ],
+            "range": [
+                0,
+                35
+            ],
+            "raw": "====\nLet me show you the way.\n====\n"
+        },
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "****\n",
+                    "range": [
+                        35,
+                        40
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 4,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 4,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "****\n",
+                    "range": [
+                        67,
+                        72
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 6,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 6,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "sidebar",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 4,
+                    "column": 0
+                },
+                "end": {
+                    "line": 6,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 5,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 27
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Let's go on a little trip.\n",
+                            "range": [
+                                40,
+                                67
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 5,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 5,
+                                    "column": 27
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        40,
+                        67
+                    ],
+                    "raw": "Let's go on a little trip.\n"
+                }
+            ],
+            "range": [
+                35,
+                72
+            ],
+            "raw": "****\nLet's go on a little trip.\n****\n"
+        }
+    ]
+}

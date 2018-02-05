@@ -1,0 +1,170 @@
+{
+    "type": "DocumentNode",
+    "raw": "....\nTest Results:\n\n  All passing.\n\nScore!\n....\n",
+    "range": [
+        0,
+        48
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 7,
+            "column": 5
+        }
+    },
+    "children": [
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "....\n",
+                    "range": [
+                        0,
+                        5
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "....\n",
+                    "range": [
+                        43,
+                        48
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 7,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 7,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "literal",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 7,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "Test Results:\n",
+                    "range": [
+                        5,
+                        19
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 2,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 14
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "\n",
+                    "range": [
+                        19,
+                        20
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 1
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "  All passing.\n",
+                    "range": [
+                        20,
+                        35
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 4,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 4,
+                            "column": 15
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "\n",
+                    "range": [
+                        35,
+                        36
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 5,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 1
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "Score!\n",
+                    "range": [
+                        36,
+                        43
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 6,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 6,
+                            "column": 7
+                        }
+                    }
+                }
+            ],
+            "range": [
+                0,
+                48
+            ],
+            "raw": "....\nTest Results:\n\n  All passing.\n\nScore!\n....\n"
+        }
+    ]
+}

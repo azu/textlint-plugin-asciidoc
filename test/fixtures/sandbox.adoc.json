@@ -1,0 +1,304 @@
+{
+    "type": "DocumentNode",
+    "raw": "= Sandbox\n\nHere's an example of a link:moredocs/another{outfilesuffix}[relative link] to a file in a sub directory using the link inline macro.\n\nHere's an example of a <<moredocs/another#,relative link>> to a file in a sub directory using the inter-document xref inline macro.\n\n++++\n<table width=\"100%\">\n  <tr>\n    <td width=\"20%\">20%</td>\n    <td width=\"80%\">80%</td>\n  </tr>\n</table>\n++++\n",
+    "range": [
+        0,
+        391
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 14,
+            "column": 5
+        }
+    },
+    "children": [
+        {
+            "type": "HeaderNode",
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 1,
+                    "column": 10
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "= Sandbox\n",
+                    "range": [
+                        0,
+                        10
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 10
+                        }
+                    }
+                }
+            ],
+            "range": [
+                0,
+                10
+            ],
+            "raw": "= Sandbox\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 3,
+                    "column": 0
+                },
+                "end": {
+                    "line": 3,
+                    "column": 133
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "Here's an example of a link:moredocs/another{outfilesuffix}[relative link] to a file in a sub directory using the link inline macro.\n",
+                    "range": [
+                        11,
+                        144
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 133
+                        }
+                    }
+                }
+            ],
+            "range": [
+                11,
+                144
+            ],
+            "raw": "Here's an example of a link:moredocs/another{outfilesuffix}[relative link] to a file in a sub directory using the link inline macro.\n"
+        },
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 5,
+                    "column": 0
+                },
+                "end": {
+                    "line": 5,
+                    "column": 132
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "Here's an example of a <<moredocs/another#,relative link>> to a file in a sub directory using the inter-document xref inline macro.\n",
+                    "range": [
+                        145,
+                        277
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 5,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 132
+                        }
+                    }
+                }
+            ],
+            "range": [
+                145,
+                277
+            ],
+            "raw": "Here's an example of a <<moredocs/another#,relative link>> to a file in a sub directory using the inter-document xref inline macro.\n"
+        },
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "++++\n",
+                    "range": [
+                        278,
+                        283
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 7,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 7,
+                            "column": 5
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "++++\n",
+                    "range": [
+                        386,
+                        391
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 14,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 14,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "pass",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 7,
+                    "column": 0
+                },
+                "end": {
+                    "line": 14,
+                    "column": 5
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "<table width=\"100%\">\n",
+                    "range": [
+                        283,
+                        304
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 8,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 8,
+                            "column": 21
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "  <tr>\n",
+                    "range": [
+                        304,
+                        311
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 9,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 9,
+                            "column": 7
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "    <td width=\"20%\">20%</td>\n",
+                    "range": [
+                        311,
+                        340
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 10,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 10,
+                            "column": 29
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "    <td width=\"80%\">80%</td>\n",
+                    "range": [
+                        340,
+                        369
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 11,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 11,
+                            "column": 29
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "  </tr>\n",
+                    "range": [
+                        369,
+                        377
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 12,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 8
+                        }
+                    }
+                },
+                {
+                    "type": "LineNode",
+                    "raw": "</table>\n",
+                    "range": [
+                        377,
+                        386
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 13,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 13,
+                            "column": 9
+                        }
+                    }
+                }
+            ],
+            "range": [
+                278,
+                391
+            ],
+            "raw": "++++\n<table width=\"100%\">\n  <tr>\n    <td width=\"20%\">20%</td>\n    <td width=\"80%\">80%</td>\n  </tr>\n</table>\n++++\n"
+        }
+    ]
+}

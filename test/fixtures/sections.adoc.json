@@ -1,0 +1,200 @@
+{
+    "type": "DocumentNode",
+    "raw": "== Introduction\n\nThis document is a good thing.\n\n== Main Points\n\nIt tells you things you need to know.\n\n== Conclusion\n\nBut like all good things, it must come to an end.\n",
+    "range": [
+        0,
+        169
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 11,
+            "column": 50
+        }
+    },
+    "children": [
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 3,
+                    "column": 31
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 31
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "This document is a good thing.\n",
+                            "range": [
+                                17,
+                                48
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 3,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "column": 31
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        17,
+                        48
+                    ],
+                    "raw": "This document is a good thing.\n"
+                }
+            ],
+            "range": [
+                0,
+                48
+            ],
+            "raw": "== Introduction\n\nThis document is a good thing.\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 5,
+                    "column": 0
+                },
+                "end": {
+                    "line": 7,
+                    "column": 38
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 7,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 7,
+                            "column": 38
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "It tells you things you need to know.\n",
+                            "range": [
+                                65,
+                                103
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 7,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 7,
+                                    "column": 38
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        65,
+                        103
+                    ],
+                    "raw": "It tells you things you need to know.\n"
+                }
+            ],
+            "range": [
+                49,
+                103
+            ],
+            "raw": "== Main Points\n\nIt tells you things you need to know.\n"
+        },
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 9,
+                    "column": 0
+                },
+                "end": {
+                    "line": 11,
+                    "column": 50
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 11,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 11,
+                            "column": 50
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "But like all good things, it must come to an end.\n",
+                            "range": [
+                                119,
+                                169
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 11,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 11,
+                                    "column": 50
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        119,
+                        169
+                    ],
+                    "raw": "But like all good things, it must come to an end.\n"
+                }
+            ],
+            "range": [
+                104,
+                169
+            ],
+            "raw": "== Conclusion\n\nBut like all good things, it must come to an end.\n"
+        }
+    ]
+}

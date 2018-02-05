@@ -1,0 +1,59 @@
+{
+    "type": "DocumentNode",
+    "raw": "All this happened, more or less.\n",
+    "range": [
+        0,
+        33
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 1,
+            "column": 33
+        }
+    },
+    "children": [
+        {
+            "type": "ParagraphNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 1,
+                    "column": 33
+                }
+            },
+            "children": [
+                {
+                    "type": "LineNode",
+                    "raw": "All this happened, more or less.\n",
+                    "range": [
+                        0,
+                        33
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 33
+                        }
+                    }
+                }
+            ],
+            "range": [
+                0,
+                33
+            ],
+            "raw": "All this happened, more or less.\n"
+        }
+    ]
+}

@@ -1,0 +1,101 @@
+{
+    "type": "DocumentNode",
+    "raw": "****\nThey begin to wander down a path.\n",
+    "range": [
+        0,
+        39
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 2,
+            "column": 34
+        }
+    },
+    "children": [
+        {
+            "type": "DelimitedBlockNode",
+            "delimiterLines": [
+                {
+                    "type": "LineNode",
+                    "raw": "****\n",
+                    "range": [
+                        0,
+                        5
+                    ],
+                    "loc": {
+                        "start": {
+                            "line": 1,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 5
+                        }
+                    }
+                }
+            ],
+            "enclosureType": "sidebar",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 2,
+                    "column": 34
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 2,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 34
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "They begin to wander down a path.\n",
+                            "range": [
+                                5,
+                                39
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 2,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "column": 34
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        5,
+                        39
+                    ],
+                    "raw": "They begin to wander down a path.\n"
+                }
+            ],
+            "range": [
+                0,
+                39
+            ],
+            "raw": "****\nThey begin to wander down a path.\n"
+        }
+    ]
+}

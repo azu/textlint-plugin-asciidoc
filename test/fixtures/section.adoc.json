@@ -1,0 +1,80 @@
+{
+    "type": "DocumentNode",
+    "raw": "== Usage\n\nOh, so you actually want to know how to you it, do you?\n",
+    "range": [
+        0,
+        66
+    ],
+    "loc": {
+        "start": {
+            "line": 1,
+            "column": 0
+        },
+        "end": {
+            "line": 3,
+            "column": 56
+        }
+    },
+    "children": [
+        {
+            "type": "SectionNode",
+            "data": [],
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 3,
+                    "column": 56
+                }
+            },
+            "children": [
+                {
+                    "type": "ParagraphNode",
+                    "data": [],
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 0
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 56
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "LineNode",
+                            "raw": "Oh, so you actually want to know how to you it, do you?\n",
+                            "range": [
+                                10,
+                                66
+                            ],
+                            "loc": {
+                                "start": {
+                                    "line": 3,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "column": 56
+                                }
+                            }
+                        }
+                    ],
+                    "range": [
+                        10,
+                        66
+                    ],
+                    "raw": "Oh, so you actually want to know how to you it, do you?\n"
+                }
+            ],
+            "range": [
+                0,
+                66
+            ],
+            "raw": "== Usage\n\nOh, so you actually want to know how to you it, do you?\n"
+        }
+    ]
+}
