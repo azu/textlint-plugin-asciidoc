@@ -115,7 +115,7 @@ describe('AsciiDocParser', () => {
     it('should terminate SectionNode at start of sibling section', () => {
       const result = parseFixture(loadFixture('sections.adoc'))
       assert.equal(result.children.length, 3)
-      const endingLines = [3, 7, 11] 
+      const endingLines = [3, 7, 11]
       result.children.forEach((sect, idx) => {
         assert.equal(sect.type, 'SectionNode')
         assert.equal(sect.children.length, 1)
@@ -227,6 +227,12 @@ describe('AsciiDocParser', () => {
     })
   })
 
+  context('Macro', () => {
+      it('should be parsed without error', () => {
+          const result = parseFixture(loadFixture('micro.adoc'))
+          assert.equal(result.type, 'DocumentNode')
+      })
+  })
   const loadFixture = (filename) => {
     let fixturePath = path.join(__dirname, 'fixtures', filename),
         fixtureContents = fs.readFileSync(fixturePath, 'UTF-8')
